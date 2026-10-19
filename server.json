@@ -1,0 +1,33 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.datawebot/datawebot",
+  "title": "datawebot",
+  "description": "Product search across online shops worldwide, plus every seller's price with a direct link.",
+  "version": "1.0.0",
+  "websiteUrl": "https://www.datawebot.com/docs/agents",
+  "repository": {
+    "url": "https://github.com/datawebot/datawebot-mcp",
+    "source": "github"
+  },
+  "icons": [
+    {
+      "src": "https://www.datawebot.com/apple-icon.png",
+      "mimeType": "image/png",
+      "sizes": ["180x180"]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.datawebot.com/mcp",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Optional. 'Bearer <API key>' from https://www.datawebot.com/dashboard for scripts, n8n and agent frameworks. Leave it out to sign in with OAuth (email approval).",
+          "isRequired": false,
+          "isSecret": true
+        }
+      ]
+    }
+  ]
+}
