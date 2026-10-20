@@ -1,0 +1,26 @@
+{
+  "name": "datawebot",
+  "displayName": "datawebot",
+  "version": "1.0.0",
+  "description": "Product search across online shops worldwide, plus every seller's price with a direct link. Hosted MCP server, free to try with email sign-in.",
+  "author": {
+    "name": "datawebot",
+    "email": "hello@datawebot.com"
+  },
+  "homepage": "https://www.datawebot.com/docs/agents",
+  "repository": "https://github.com/datawebot/datawebot-mcp",
+  "license": "MIT",
+  "logo": "assets/logo.png",
+  "keywords": [
+    "datawebot",
+    "mcp",
+    "ecommerce",
+    "product-search",
+    "price-comparison",
+    "shopping",
+    "sellers"
+  ],
+  "category": "integrations",
+  "tags": ["datawebot", "ecommerce", "product-search", "mcp"],
+  "mcpServers": "./mcp.json"
+}

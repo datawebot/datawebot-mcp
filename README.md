@@ -1,12 +1,15 @@
 # datawebot MCP server
 
+[![Add to Cursor](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/install-mcp?name=datawebot&config=eyJ1cmwiOiJodHRwczovL21jcC5kYXRhd2Vib3QuY29tL21jcCJ9)
+[![Install in VS Code](https://img.shields.io/badge/VS_Code-Install_datawebot-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://vscode.dev/redirect/mcp/install?name=datawebot&config=%7B%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fmcp.datawebot.com%2Fmcp%22%7D)
+
 Ask your agent who sells it and for how much. datawebot finds a product in online shops around the world and returns every seller's price with a direct link, in seconds.
 
 - **Server URL:** `https://mcp.datawebot.com/mcp` (remote, streamable HTTP)
 - **Sign-in:** free, by email approval. No password, no card.
 - **Website:** [datawebot.com](https://www.datawebot.com) · [Docs for agents](https://www.datawebot.com/docs/agents)
 
-This repository holds the public connection details, the MCP Registry entry (`server.json`) and working examples. The server itself is hosted; there is nothing to install.
+This repository holds the public connection details, the MCP Registry entry (`server.json`), the Cursor plugin manifest (`.cursor-plugin/plugin.json`, `mcp.json`), agent install notes (`llms-install.md`) and working examples. The server itself is hosted; there is nothing to install.
 
 ## What it can do today
 
@@ -41,7 +44,13 @@ Or tell any coding agent with a shell: `set up https://mcp.datawebot.com/setup.m
 
 ### Cursor
 
-`~/.cursor/mcp.json` or `.cursor/mcp.json`:
+Click **Add to Cursor** at the top of this page, or paste this link into your browser:
+
+```
+cursor://anysphere.cursor-deeplink/mcp/install?name=datawebot&config=eyJ1cmwiOiJodHRwczovL21jcC5kYXRhd2Vib3QuY29tL21jcCJ9
+```
+
+This repository is also a Cursor plugin (`.cursor-plugin/plugin.json` and `mcp.json`). Or add it by hand to `~/.cursor/mcp.json` or `.cursor/mcp.json`:
 
 ```json
 {
@@ -53,7 +62,7 @@ Or tell any coding agent with a shell: `set up https://mcp.datawebot.com/setup.m
 
 ### VS Code
 
-`.vscode/mcp.json`:
+Click **Install in VS Code** at the top of this page, or add it to `.vscode/mcp.json`:
 
 ```json
 {
@@ -62,6 +71,20 @@ Or tell any coding agent with a shell: `set up https://mcp.datawebot.com/setup.m
   }
 }
 ```
+
+### Cline
+
+**MCP Servers → Remote Servers**: Server Name `datawebot`, Server URL `https://mcp.datawebot.com/mcp`, Transport Type **Streamable HTTP** → **Add Server**, then click **Authenticate** on the server and approve the email from datawebot. To edit the settings file instead, use `"type": "streamableHttp"` (without it Cline uses legacy SSE):
+
+```json
+{
+  "mcpServers": {
+    "datawebot": { "type": "streamableHttp", "url": "https://mcp.datawebot.com/mcp" }
+  }
+}
+```
+
+Agents that install servers for you (such as Cline) can follow [`llms-install.md`](llms-install.md).
 
 ### Scripts, n8n and agent frameworks (API key)
 
