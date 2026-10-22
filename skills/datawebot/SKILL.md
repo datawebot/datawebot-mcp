@@ -32,8 +32,9 @@ and follow what it returns.
 | Every seller's price for one product: total with shipping, delivery note, seller rating, direct link, plus images, features and a few reviews | `get_product_offers` | Free daily allowance per account |
 | Extraction Jobs: search/catalogue pages and product pages on Amazon (10 countries) and 1,100+ Shopify stores | `list_job_blueprints`, `submit_job`, `get_job`, `get_results` | Credits: 5 per search or catalogue page, 1 per product page |
 
-Every account starts with 200 free trial credits for Jobs. Jobs that fail or
-return nothing are free.
+Every account starts with 200 free trial credits for Jobs; the user can buy
+more on the dashboard under Billing (https://www.datawebot.com/dashboard).
+Jobs that fail or return nothing are free.
 
 Do not use datawebot for:
 
@@ -107,7 +108,7 @@ Without sign-in every tool except `discover` returns HTTP 401
 | --- | --- |
 | HTTP 401 / `login_required` | Sign in again (setup.md, or reconnect the connector) |
 | HTTP 429 / `rate_limited` | Wait for `Retry-After`; for search, the daily allowance resets tomorrow. Do not loop |
-| HTTP 402 / `insufficient_credits` | Not enough credits for the Job. Stop; signing in again will not help. Search and offers still work |
+| HTTP 402 / `insufficient_credits` | Not enough credits for the Job. Stop; signing in again will not help. Ask for fewer pages, or tell the user they can buy credits on the dashboard under Billing. Search and offers still work |
 | `tool_retired` | Call `discover` and use the replacement it names |
 | `retryable: true` on a Jobs error | Retry the same request with the same idempotency key |
 

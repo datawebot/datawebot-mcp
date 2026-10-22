@@ -19,7 +19,7 @@ This repository holds the public connection details, the MCP Registry entry (`se
 | `search_products` | Products for sale across online shops worldwide, in local languages: title, price, original price, shop, rating, review count, image, condition, link and retrieval time. Filter by country and, optionally, by shop domains. |
 | `get_product_offers` | For one product from a search: each seller's price, total with shipping, delivery note, seller rating and a direct link to the product page. |
 | `discover` | Lists every tool available now, including ones added after your session started. Call it first. |
-| `list_job_blueprints`, `submit_job`, `get_job`, `get_results` | Extraction Jobs for search results and product pages on Amazon (10 countries) and supported stores such as Allbirds, Ring, Arlo, ecobee and iFixit. Open to every account; new accounts start with free trial credits. Call `list_job_blueprints` for the current list. |
+| `list_job_blueprints`, `submit_job`, `get_job`, `get_results` | Extraction Jobs for search results and product pages on Amazon (10 countries) and supported stores such as Allbirds, Ring, Arlo, ecobee and iFixit. Open to every account: new accounts start with 200 free trial credits, and more can be bought on the [dashboard](https://www.datawebot.com/dashboard) (packs from $10 for 10,000 credits). Call `list_job_blueprints` for the current list. |
 
 Results are best-effort snapshots with the time they were retrieved. They are not verified or guaranteed-current prices. datawebot does not store price history, run scheduled checks or send alerts; your agent or script keeps whatever it needs.
 
