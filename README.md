@@ -7,7 +7,7 @@
 Ask your agent who sells it and for how much. datawebot finds a product in online shops around the world and returns every seller's price with a direct link, in seconds.
 
 - **Server URL:** `https://mcp.datawebot.com/mcp` (remote, streamable HTTP)
-- **Sign-in:** free, by email approval. No password, no card.
+- **Sign-in:** free, by email approval. No password, no card. OAuth 2.1 per the MCP authorization spec, or an API key (see [Authentication](#authentication)).
 - **Website:** [datawebot.com](https://www.datawebot.com) · [Docs for agents](https://www.datawebot.com/docs/agents)
 
 This repository holds the public connection details, the MCP Registry entry (`server.json`), the Cursor plugin manifest (`.cursor-plugin/plugin.json`, `mcp.json`), the Claude Code plugin (`.claude-plugin/`, `.mcp.json`), the Gemini CLI extension (`gemini-extension.json`, `GEMINI.md`), an agent skill (`skills/datawebot/SKILL.md`), agent install notes (`llms-install.md`) and working examples. The server itself is hosted; there is nothing to install.
@@ -19,7 +19,7 @@ This repository holds the public connection details, the MCP Registry entry (`se
 | `search_products` | Products for sale across online shops worldwide, in local languages: title, price, original price, shop, rating, review count, image, condition, link and retrieval time. Filter by country and, optionally, by shop domains. |
 | `get_product_offers` | For one product from a search: each seller's price, total with shipping, delivery note, seller rating and a direct link to the product page. |
 | `discover` | Lists every tool available now, including ones added after your session started. Call it first. |
-| `list_job_blueprints`, `submit_job`, `get_job`, `get_results` | Extraction Jobs for search results and product pages on Amazon (10 countries) and supported stores such as Allbirds, Ring, Arlo, ecobee and iFixit. Open to every account: new accounts start with 200 free trial credits, and more can be bought on the [dashboard](https://www.datawebot.com/dashboard) (packs from $10 for 10,000 credits). Call `list_job_blueprints` for the current list. |
+| `list_job_blueprints`, `submit_job`, `get_job`, `get_results` | Extraction Jobs for search results and product pages. Coverage: Amazon in 10 countries (amazon.com, .co.uk, .de, .fr, .it, .es, .ca, .com.au, .co.jp, .sg), Walmart US, a set of reviewed stores such as Allbirds, Ring, Arlo, ecobee and iFixit, and over 11,000 online store domains listed in the [endpoint directory](https://www.datawebot.com/endpoints), most of them Shopify stores. Stores added through our automated probe are labelled "Probe-qualified; live production acceptance pending" in `list_job_blueprints`; check each contract's `qualification` and `availability` before you rely on it. Open to every account: new accounts start with 200 free trial credits, and more can be bought on the [dashboard](https://www.datawebot.com/dashboard) (packs from $10 for 10,000 credits). Call `list_job_blueprints` for the current list. |
 
 Results are best-effort snapshots with the time they were retrieved. They are not verified or guaranteed-current prices. datawebot does not store price history, run scheduled checks or send alerts; your agent or script keeps whatever it needs.
 
@@ -137,6 +137,13 @@ Authorization: Bearer <your API key>
 ```
 
 Any client that can call a remote MCP server with a header works, for example n8n's MCP Client tool, LangChain's `langchain-mcp-adapters`, the OpenAI Agents SDK, the Vercel AI SDK and CrewAI. Keep the key in an environment variable or your tool's credential store, never in code.
+
+## Authentication
+
+The server follows the MCP authorization spec. An unauthenticated request gets `401` with a `WWW-Authenticate` header pointing to the protected-resource metadata at `https://mcp.datawebot.com/.well-known/oauth-protected-resource/mcp`.
+
+- **OAuth 2.1** (MCP clients such as Claude, ChatGPT, Cursor, VS Code, Cline, Gemini CLI): authorization code flow with PKCE (`S256`), dynamic client registration and refresh tokens. Authorization server metadata: `https://mcp.datawebot.com/.well-known/oauth-authorization-server`. Sign-in is by email approval.
+- **API key** (scripts, n8n, agent frameworks): send `Authorization: Bearer <your API key>`; see the API key section above.
 
 ## Examples
 
