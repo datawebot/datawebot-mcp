@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "datawebot": {
+      "type": "http",
+      "url": "https://mcp.datawebot.com/mcp"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "datawebot",
+  "version": "1.0.0",
+  "description": "Product search across online shops worldwide, plus every seller's price with a direct link. Hosted MCP server, free to try with email sign-in.",
+  "mcpServers": {
+    "datawebot": {
+      "httpUrl": "https://mcp.datawebot.com/mcp"
+    }
+  },
+  "contextFileName": "GEMINI.md"
+}

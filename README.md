@@ -2,6 +2,7 @@
 
 [![Add to Cursor](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/install-mcp?name=datawebot&config=eyJ1cmwiOiJodHRwczovL21jcC5kYXRhd2Vib3QuY29tL21jcCJ9)
 [![Install in VS Code](https://img.shields.io/badge/VS_Code-Install_datawebot-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://vscode.dev/redirect/mcp/install?name=datawebot&config=%7B%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fmcp.datawebot.com%2Fmcp%22%7D)
+[![Add to LM Studio](https://files.lmstudio.ai/deeplink/mcp-install-dark.svg)](https://lmstudio.ai/install-mcp?name=datawebot&config=eyJ1cmwiOiJodHRwczovL21jcC5kYXRhd2Vib3QuY29tL21jcCJ9)
 
 Ask your agent who sells it and for how much. datawebot finds a product in online shops around the world and returns every seller's price with a direct link, in seconds.
 
@@ -9,7 +10,7 @@ Ask your agent who sells it and for how much. datawebot finds a product in onlin
 - **Sign-in:** free, by email approval. No password, no card.
 - **Website:** [datawebot.com](https://www.datawebot.com) · [Docs for agents](https://www.datawebot.com/docs/agents)
 
-This repository holds the public connection details, the MCP Registry entry (`server.json`), the Cursor plugin manifest (`.cursor-plugin/plugin.json`, `mcp.json`), agent install notes (`llms-install.md`) and working examples. The server itself is hosted; there is nothing to install.
+This repository holds the public connection details, the MCP Registry entry (`server.json`), the Cursor plugin manifest (`.cursor-plugin/plugin.json`, `mcp.json`), the Claude Code plugin (`.claude-plugin/`, `.mcp.json`), the Gemini CLI extension (`gemini-extension.json`, `GEMINI.md`), an agent skill (`skills/datawebot/SKILL.md`), agent install notes (`llms-install.md`) and working examples. The server itself is hosted; there is nothing to install.
 
 ## What it can do today
 
@@ -36,11 +37,34 @@ Add a custom MCP server with the URL `https://mcp.datawebot.com/mcp` and OAuth a
 
 ### Claude Code
 
+Install the datawebot plugin, which adds the MCP server and the datawebot skill. In a Claude Code session:
+
+```text
+/plugin install datawebot --marketplace datawebot/datawebot-mcp
+```
+
+On Claude Code versions before 2.1.275, add the marketplace first, then install:
+
+```text
+/plugin marketplace add datawebot/datawebot-mcp
+/plugin install datawebot@datawebot
+```
+
+Then run `/mcp`, choose `datawebot` and approve the sign-in email. To add only the MCP server, without the plugin:
+
 ```bash
 claude mcp add --transport http datawebot https://mcp.datawebot.com/mcp
 ```
 
 Or tell any coding agent with a shell: `set up https://mcp.datawebot.com/setup.md`. It reads the file, asks for your email and saves the key itself, so no key is pasted into a chat.
+
+### Gemini CLI
+
+```bash
+gemini extensions install https://github.com/datawebot/datawebot-mcp
+```
+
+The extension adds the MCP server, a short `GEMINI.md` context file and the datawebot skill. Start `gemini`; the server asks for sign-in on first use, or run `/mcp auth datawebot` and approve the email from datawebot.
 
 ### Cursor
 
@@ -85,6 +109,24 @@ Click **Install in VS Code** at the top of this page, or add it to `.vscode/mcp.
 ```
 
 Agents that install servers for you (such as Cline) can follow [`llms-install.md`](llms-install.md).
+
+### LM Studio
+
+Click **Add to LM Studio** at the top of this page (LM Studio 0.3.17 or later), or open this link:
+
+```
+lmstudio://add_mcp?name=datawebot&config=eyJ1cmwiOiJodHRwczovL21jcC5kYXRhd2Vib3QuY29tL21jcCJ9
+```
+
+It adds `{"url": "https://mcp.datawebot.com/mcp"}` to LM Studio's `mcp.json`.
+
+### Replit
+
+[Add to Replit](https://replit.com/integrations?mcp=eyJkaXNwbGF5TmFtZSI6ImRhdGF3ZWJvdCIsImJhc2VVcmwiOiJodHRwczovL21jcC5kYXRhd2Vib3QuY29tL21jcCJ9), then **Test & save** and approve the sign-in email from datawebot.
+
+### Agent skill
+
+[`skills/datawebot/SKILL.md`](skills/datawebot/SKILL.md) follows the [Agent Skills](https://agentskills.io) format. It teaches an agent the datawebot workflow: search, seller offers, extraction Jobs, credits and errors. The Claude Code plugin and the Gemini CLI extension include it; for other agents that read skills, copy the `skills/datawebot` folder into their skills directory.
 
 ### Scripts, n8n and agent frameworks (API key)
 
