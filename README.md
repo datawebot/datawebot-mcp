@@ -11,6 +11,13 @@ Ask your agent who sells it and for how much. datawebot finds a product in onlin
 
 This repository holds the public connection details, the MCP Registry entry (`server.json`), the Cursor plugin manifest (`.cursor-plugin/plugin.json`, `mcp.json`), agent install notes (`llms-install.md`) and working examples. The server itself is hosted; there is nothing to install.
 
+## What is datawebot?
+
+datawebot gives AI agents ecommerce product data: product search across online shops
+worldwide and seller offers with direct links to each shop, through an MCP server.
+
+Learn more: [About datawebot](https://www.datawebot.com/about).
+
 ## What it can do today
 
 | Tool | What it returns |
