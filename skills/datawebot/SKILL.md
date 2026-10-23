@@ -5,7 +5,7 @@ description: >-
   products for sale across online shops (title, price, shop, rating, review
   count, image, link), to list every seller's price for one product with direct
   shop links, and to run extraction Jobs on Amazon search and product pages
-  (10 countries) and 1,100+ Shopify stores, paid from 200 free trial credits.
+  (10 countries), Walmart US and the stores in datawebot.com/endpoints, paid from 200 free trial credits.
   Sign-in is free by email. Not for price history, alerts, guaranteed-current
   prices, logged-in prices or whole-catalog crawls.
 license: MIT
@@ -30,7 +30,7 @@ and follow what it returns.
 | --- | --- | --- |
 | Find products: title, price, original price, shop, rating, review count, image, condition, link | `search_products` | Free daily allowance per account |
 | Every seller's price for one product: total with shipping, delivery note, seller rating, direct link, plus images, features and a few reviews | `get_product_offers` | Free daily allowance per account |
-| Extraction Jobs: search/catalogue pages and product pages on Amazon (10 countries) and 1,100+ Shopify stores | `list_job_blueprints`, `submit_job`, `get_job`, `get_results` | Credits: 5 per search or catalogue page, 1 per product page |
+| Extraction Jobs: search/catalogue pages and product pages on Amazon (10 countries), Walmart US, reviewed stores and the endpoint directory (11,000+ store domains; probe-qualified ones are labelled, check `qualification` and `availability`) | `list_job_blueprints`, `submit_job`, `get_job`, `get_results` | Credits: 5 per search or catalogue page, 1 per product page |
 
 Every account starts with 200 free trial credits for Jobs; the user can buy
 more on the dashboard under Billing (https://www.datawebot.com/dashboard).
