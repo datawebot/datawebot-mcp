@@ -16,14 +16,18 @@ This repository holds the public connection details, the MCP Registry entry (`se
 
 | Tool | What it returns |
 | --- | --- |
-| `search_products` | Products for sale across online shops worldwide, in local languages: title, price, original price, shop, rating, review count, image, condition, link and retrieval time. Filter by country and, optionally, by shop domains. |
-| `get_product_offers` | For one product from a search: each seller's price, total with shipping, delivery note, seller rating and a direct link to the product page. |
 | `discover` | Lists every tool available now, including ones added after your session started. Call it first. |
-| `list_job_blueprints`, `submit_job`, `get_job`, `get_results` | Extraction Jobs for search results and product pages. Coverage: Amazon in 10 countries (amazon.com, .co.uk, .de, .fr, .it, .es, .ca, .com.au, .co.jp, .sg), Walmart US, a set of reviewed stores such as Allbirds, Ring, Arlo, ecobee and iFixit, and over 11,000 online store domains listed in the [endpoint directory](https://www.datawebot.com/endpoints), most of them Shopify stores. Stores added through our automated probe are labelled "Probe-qualified; live production acceptance pending" in `list_job_blueprints`; check each contract's `qualification` and `availability` before you rely on it. Open to every account: new accounts start with 200 free trial credits, and more can be bought on the [dashboard](https://www.datawebot.com/dashboard) (packs from $10 for 10,000 credits). Call `list_job_blueprints` for the current list. |
+| `search_products` | Products for sale across online stores around the world, from Amazon and Walmart to brand stores, in local languages: title, price, original price, shop, rating, review count, image, condition, link and retrieval time. Filter by country and, optionally, by shop. |
+| `get_product` | One product's details by URL or `product_id`. For a product sold by several shops: each seller's price, total with shipping, delivery note, seller rating and a direct link to the product page. |
+| `get_results` | Collects an answer that was still working when first asked. |
+| `find_endpoints`, `submit_job` | Extraction Jobs on a store's exact endpoints: search, catalogue, category and product pages. `find_endpoints` is free and lists what a store supports, with prices and page limits; `submit_job` runs one on one URL. |
+| `check_site`, `get_account` | Price a store before you spend, and see the credits left. |
+
+Searches, product reads and Jobs are paid in credits. New accounts start with 200 free credits, and more can be bought on the [dashboard](https://www.datawebot.com/dashboard). Failed or empty requests are free.
 
 Results are best-effort snapshots with the time they were retrieved. They are not verified or guaranteed-current prices. datawebot does not store price history, run scheduled checks or send alerts; your agent or script keeps whatever it needs.
 
-There is a free daily allowance per account. Each response reports what is left.
+Call `get_account` for the credits left.
 
 ## Connect
 

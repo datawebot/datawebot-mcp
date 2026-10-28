@@ -65,9 +65,9 @@ Do not ask the user to paste passwords or keys into the chat for this step. OAut
 
 1. Call `discover`. It lists every tool available to this account right now.
 2. Call `search_products` with a simple query, for example `{"query": "Sony WH-1000XM5", "country": "US"}`, and show the user a few results with title, price, shop and link.
-3. For one result, call `get_product_offers` with its `product_id` and the same `query` and `country` to list each seller's price, total with shipping and a direct link.
+3. For one result, call `get_product` with its `product_id` to list each seller's price, total with shipping and a direct link.
 
-Results are best-effort snapshots and carry the time they were retrieved. Do not present prices as verified or current. There is a free daily allowance per account, and each response reports what is left.
+Results are best-effort snapshots and carry the time they were retrieved. Do not present prices as verified or current. Searches and product reads cost credits (200 free credits per account); failed or empty ones are free. Call `get_account` for the credits left.
 
 ## Troubleshooting
 
