@@ -249,7 +249,7 @@ reporting a problem.
 | `rate_limited` / HTTP 429 | Rate limit or shared capacity reached | Wait for `Retry-After` when present, then try again; do not loop |
 | `insufficient_credits` / HTTP 402 | Not enough credits for the Job | Stop; do not re-sign-in. Ask for fewer pages, or tell the user they can buy credits on the dashboard under Billing |
 | `tool_retired` | A tool was renamed or removed | Call `discover` and use the replacement it names |
-| `retryable: true` in a Jobs error | Transient | Retry the same request with the same idempotency identity |
+| `retryable: true` in a Jobs error | Transient | Retry the same request with the same `request_key` (or `Idempotency-Key` over REST) |
 | `UNAVAILABLE` Job | Blueprint in maintenance | Stop and report; polling will not change it |
 
 ## Safety
