@@ -1,7 +1,7 @@
 {
   "name": "datawebot",
   "displayName": "datawebot",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Product search across online shops worldwide, plus every seller's price with a direct link. Hosted MCP server and agent skill, free to try with email sign-in.",
   "author": {
     "name": "datawebot",
